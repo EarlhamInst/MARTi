@@ -39,3 +39,8 @@ Can I use TaxaFilter for Kraken2?
 ---------------------------------
 
 For query-time exclusion, this is determined by the capabilities of the underlying tools rather than by MARTi. BLAST and Centrifuge both have options to filter taxa, but Kraken2 currently does not. Kraken2 exclusion must be achieved by omitting taxa when building the database or by post-classification filtering. 
+
+What is the LCA minimum abundance cutoff?
+-----------------------------------------
+
+LCA stands for Lowest Common Ancestor and is the process used with BLAST results to assign reads to taxa. The cutoff sets the minimum abundance level that a taxa needs to have to be shown. If a taxa has fewer reads than this minimum abundance, its read counts will be moved up the taxonomic tree until the threshold is met. So a threshold of 0.1% means that a taxa must possess at least 0.1% of classified reads in order for it to be shown. It is a useful tool for simplifying a taxonomic tree. 
