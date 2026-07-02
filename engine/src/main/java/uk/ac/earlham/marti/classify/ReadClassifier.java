@@ -283,7 +283,7 @@ public class ReadClassifier {
                                 // Write files for min support 0, 0.1, 1 and 2
                                 startTime = System.nanoTime();
                                 
-                                for (double s : new double[] {0, 0.05, 0.1, 1, 2}) {
+                                for (double s : new double[] {0, 0.005, 0.05, 0.1, 1, 2}) {
                                     options.getLog().println("Writing classifications for minSupport "+s);
                                     options.getResults().writeTree(barcode, s);
                                     options.getResults().storeAccumulationData(barcode, fastaChunkNumber, chunkNumberByOrderCompleted, md.getReadsAnalysed(), md.getLastChunkAnalysedTime(), s);

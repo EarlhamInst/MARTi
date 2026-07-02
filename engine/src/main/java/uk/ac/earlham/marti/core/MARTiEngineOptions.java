@@ -30,6 +30,11 @@ import java.util.concurrent.TimeUnit;
  * @author Richard M. Leggett
  */
 public class MARTiEngineOptions implements Serializable {
+    public enum MinSupportDenominator {
+        FILTERED_READS,
+        ASSIGNED_READS
+    }    
+
     public static final boolean DEBUG_DONT_SUBMIT_JOB = false;
     private static final long serialVersionUID = MARTiEngine.SERIAL_VERSION;
     public final static int MAX_BARCODES = 100;
@@ -173,6 +178,7 @@ public class MARTiEngineOptions implements Serializable {
     private String AIAPIKey = null;
     private int queryAIEvery = 0;
     private int lastAIQuery = 0;
+    private MinSupportDenominator minSupportDenominator = MinSupportDenominator.ASSIGNED_READS;
     
     public MARTiEngineOptions() {
         String osName = System.getProperty("os.name").toLowerCase();
@@ -1099,6 +1105,20 @@ public class MARTiEngineOptions implements Serializable {
                                 AIAPIKey = tokens[1];
                             } else if (tokens[0].compareToIgnoreCase("AIQueryInterval") == 0) {
                                 queryAIEvery = Integer.parseInt(tokens[1]);
+                            } else if (tokens[0].compareToIgnoreCase("LCAMinSupportDenominator") == 0) {
+                                if (tokens.length < 2) {
+                                    System.out.println("Error: LCAMinSupportDenominator requires a value");
+                                    System.exit(1);
+                                }
+                                String value = tokens[1].trim();
+                                if (value.equalsIgnoreCase("filteredReads") || value.equalsIgnoreCase("allReads")) {
+                                    minSupportDenominator = MinSupportDenominator.FILTERED_READS;
+                                } else if (value.equalsIgnoreCase("assignedReads")) {
+                                    minSupportDenominator = MinSupportDenominator.ASSIGNED_READS;
+                                } else {
+                                    System.out.println("Error: unknown LCAMinSupportDenominator value '" + value + "'. Expected filteredReads or assignedReads.");
+                                    System.exit(1);
+                                }
                             } else if (!tokens[0].startsWith("#")) {                                
                                 System.out.println("ERROR: Unknown token "+tokens[0]);
                                 System.exit(1);
@@ -1711,4 +1731,12 @@ public class MARTiEngineOptions implements Serializable {
             alertsList.writeAlertsFile(getMARTiJSONDirectory(0) + File.separator + "alerts.json");
         }
     }
+    
+    public MinSupportDenominator getMinSupportDenominator() {
+        return minSupportDenominator;
+    }
+
+    public boolean useFilteredReadsForMinSupport() {
+        return minSupportDenominator == MinSupportDenominator.FILTERED_READS;
+    }    
 }

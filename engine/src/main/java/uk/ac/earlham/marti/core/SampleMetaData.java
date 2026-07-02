@@ -177,6 +177,10 @@ public class SampleMetaData {
         return readsAnalysed;
     }
     
+    public synchronized long getBpAnalysed() {
+        return bpAnalysed;
+    }    
+    
     public int getReadsUnclassified() {
         //System.out.println("readsPassedFilter "+readsPassedFilter);
         //System.out.println("readsClassified "+readsClassified);

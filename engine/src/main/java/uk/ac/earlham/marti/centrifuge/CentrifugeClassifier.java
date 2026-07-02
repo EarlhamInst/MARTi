@@ -109,7 +109,7 @@ public class CentrifugeClassifier {
                     int fastaChunkNumber = getChunkNumber(f.getClassificationFile());
                     int chunkNumberByOrderCompleted = options.getResults().addChunk(barcode, f);
                     
-                    for (double s : new double[] {0, 0.05, 0.1, 1, 2}) {
+                    for (double s : new double[] {0, 0.005, 0.05, 0.1, 1, 2}) {
                         options.getResults().writeTree(barcode, s);
                         options.getResults().storeAccumulationData(barcode, fastaChunkNumber, chunkNumberByOrderCompleted, md.getReadsAnalysed(), md.getLastChunkAnalysedTime(), s);
                         options.getResults().writeAccumulationJson(barcode, s);                                

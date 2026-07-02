@@ -18,7 +18,7 @@ import uk.ac.earlham.ml.MARTiMLAnalysis;
  * @author Richard M. Leggett
  */
 public class MARTiEngine {
-    public final static String VERSION_STRING = "v0.9.33b";
+    public final static String VERSION_STRING = "v0.9.34";
     public final static long SERIAL_VERSION = 3L;
     public final static boolean SHOW_NOTES = false;
         

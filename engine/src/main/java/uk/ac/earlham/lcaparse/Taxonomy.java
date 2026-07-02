@@ -987,41 +987,42 @@ public class Taxonomy {
         martiOptions.getLog().println("Timing: LCA assignment copy in " + timeDiff + " ms");
     }
     
+    /**
+     * Legacy behaviour: calculate minimum support as a percentage
+     * of taxonomically assigned reads or assigned yield.
+     */
+    public synchronized void adjustForMinSupport(int bc, double minSupportPercent, boolean byCount) {
+        long denominator = byCount ? assignedCount[bc] : assignedYield[bc];
+        adjustForMinSupport(bc, minSupportPercent, byCount, denominator);
+    }
     
-    public synchronized void adjustForMinSupport(int bc, double ms, boolean byCount) {
-        // Basing percentage on total assigned reads.
-        // But should it be on total reads?
-        if(byCount) {
-            double minReadsD = ((double)assignedCount[bc] * ms) / 100.0;
-            long minReadsL = Math.round(minReadsD);
-            int minReads = (int)minReadsL; 
+    public synchronized void adjustForMinSupport(int bc, double minSupportPercent, boolean byCount, long denominator) {
+        // denominator is a read count when byCount is true, and a base-pair yield when byCount is false.
+        if (denominator < 0) {
+            throw new IllegalArgumentException("Minimum-support denominator cannot be negative");
+        }            
 
-            if (minReads < 1) {
-                minReads = 1;
-            }
+        if (!Double.isFinite(minSupportPercent)|| minSupportPercent < 0.0) {
+            throw new IllegalArgumentException("Minimum-support percentage must be finite and non-negative");
+        }
 
-            martiOptions.getLog().println("LCA adjustment assigned count "+assignedCount[bc]);
-            martiOptions.getLog().println("LCA adjustment min reads for "+ms+" percent is "+minReads);
+        // Calculate minimum support read count
+        long calculatedSupport = Math.round(((double) denominator * minSupportPercent) / 100.0);
+        if (calculatedSupport <1) {
+            calculatedSupport = 1;
+        }
 
-            // Make copy of tree assignments
-            copyLCAAssignments(bc);     
-
-            // Start at root and check recursively...
-            TaxonomyNode n = nodesById.get(1L);
-            adjustNodeByCount(bc, minReads, n, null);
-        } else { // by yield
-            double minYieldD = ((double)assignedYield[bc] * ms) / 100.;
-            long minYield = Math.round(minYieldD);
-            if(minYield < 1) {
-                minYield = 1;
-            }
-     
-            martiOptions.getLog().println("LCA adjustment assigned yield " + assignedYield[bc]);
-            martiOptions.getLog().println("LCA adjustment min yield for "+ms+" percent is " + minYield);
-
-            copyLCAAssignments(bc);
-            TaxonomyNode n = nodesById.get(1L);
-            adjustNodeByYield(bc, minYield, n, null);
+        // Make copy of tree assignments
+        copyLCAAssignments(bc);     
+        TaxonomyNode n = nodesById.get(1L);
+        
+        if (byCount) {
+            int minimumSupport = Math.toIntExact(calculatedSupport);
+            martiOptions.getLog().println("Adjusting taxonomy by count; denominator=" + denominator + ", minSupport=" + minSupportPercent + "%, minimumReads=" + minimumSupport);
+            adjustNodeByCount(bc, minimumSupport, n, null);
+        } else {
+            martiOptions.getLog().println("Adjusting taxonomy by yield; denominator=" + denominator + ", minSupport=" + minSupportPercent + "%, minimumYield=" + calculatedSupport);
+            adjustNodeByYield(bc, calculatedSupport, n, null);
         }
     }
     

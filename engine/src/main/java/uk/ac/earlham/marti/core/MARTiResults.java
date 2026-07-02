@@ -228,8 +228,12 @@ public class MARTiResults {
         String jsonFilenameFinal;
         String assignmentsFilename;
         String assignmentsFilenameFinal;
-        PrintWriter pwAssignments = null;
-                
+        PrintWriter pwAssignments = null; 
+        SampleMetaData sampleMetaData = options.getSampleMetaData(bc);
+        final int analysedReadCount = sampleMetaData.getReadsAnalysed();
+        final long analysedYield = sampleMetaData.getBpAnalysed();
+        final boolean useFilteredReads = options.useFilteredReadsForMinSupport();        
+        
         if (chunkCount.containsKey(bc)) {
             fileCount = chunkCount.get(bc);
         } else {
@@ -276,7 +280,11 @@ public class MARTiResults {
         long startTime = System.nanoTime();
         // minSuppport of 100 is special case to output the non-LCA counts
         if (minSupport < 100) {
-            taxonomy.adjustForMinSupport(bc, minSupport, true);
+            if (useFilteredReads) {
+                taxonomy.adjustForMinSupport(bc, minSupport, true, analysedReadCount);
+            } else {
+                taxonomy.adjustForMinSupport(bc, minSupport, true);
+            }            
         }
         long timeDiff = (System.nanoTime() - startTime) / 1000000;
         options.getLog().println("Timing: Min support refactoring for barcode "+bc+" minSupport "+minSupport+" completed in "+timeDiff+" ms");
@@ -296,7 +304,11 @@ public class MARTiResults {
         startTime = System.nanoTime();
         // minSuppport of 100 is special case to output the non-LCA counts
         if (minSupport < 100) {
-            taxonomy.adjustForMinSupport(bc, minSupport, false);
+            if (useFilteredReads) {
+                taxonomy.adjustForMinSupport(bc, minSupport, false, analysedYield);
+            } else {
+                taxonomy.adjustForMinSupport(bc, minSupport, false);
+            }            
         }
         timeDiff = (System.nanoTime() - startTime) / 1000000;
         options.getLog().println("Timing: Min support refactoring for barcode "+bc+" minSupport "+minSupport+" completed in "+timeDiff+" ms");

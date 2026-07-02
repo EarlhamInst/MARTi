@@ -218,6 +218,9 @@ public class MARTiConfigFile {
             pw.println("# LCAMinCombinedScore specifies the minimum combined identity + query coverage for a hit to be considered (0)");
             pw.println("# LCAMinLength specifies the minimum length of hit to consider");
             pw.println("# LCAMinReadLength specifies the minimum length of read to consider");
+            pw.println("# LCAMinSupportDenominator specifies the denominator used when applying tree minimum support:");
+            pw.println("#    filteredReads: all pass-filter reads included in the analysis");
+            pw.println("#    assignedReads: classified/assigned reads only");
             pw.println("");
             pw.println("LCAMaxHits:" + options.getLCAMaxHits());
             pw.println("LCAScorePercent:" + options.getLCAScorePercent());
@@ -226,6 +229,7 @@ public class MARTiConfigFile {
             pw.println("LCAMinCombinedScore:" + options.getLCAMinCombinedScore());
             pw.println("LCAMinLength:" + options.getLCAMinLength());
             pw.println("LCAMinReadLength:" + options.getLCAMinReadLength());
+            pw.println("LCAMinSupportDenominator: filteredReads");
             
             pw.println("");
             pw.println("# Metadata blocks can be used to describe the sample being analysed.");

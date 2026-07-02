@@ -6,3 +6,4 @@ LCAMinReadLength	100	Minimum length of read to consider. Default 0. Note, this c
 LCAMinQueryCoverage	70	Only consider hits with this minmum percent coverage of query. Default 0.
 LCAMinCombinedScore	120	Only consider hits where identity % added to query coverage % is greater than this value. Default 0.
 LCALimitToSpecies	n/a	Limit LCA classification to species level and no lower.
+LCAMinSupportDenominator	filteredReads	Specifies the denominator used when applying tree minimum support - either filteredReads (all pass-filter reads) or assignedReads (classified/assigned reads only). Currently defaults to assignedReads for backwards compatibility, but recommend using filteredReads.

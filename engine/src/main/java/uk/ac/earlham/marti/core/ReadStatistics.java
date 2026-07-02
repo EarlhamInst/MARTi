@@ -66,6 +66,7 @@ public class ReadStatistics {
                     return passLengthsByBarcode.get(bc).get(queryid);
                 } else {
                     options.getLog().printlnLogAndScreen("Error: can't find pass length of "+queryid);
+                    options.getLog().printlnLogAndScreen("This usually occurs if you are using -dontrunblast and have changed settings e.g. chunk size, filtering. You need to use exactly the same settings if using dontrunblast.");
                     System.exit(1);
                 }
             } else {
