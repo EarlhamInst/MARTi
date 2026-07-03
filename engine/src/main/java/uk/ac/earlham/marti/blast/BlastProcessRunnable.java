@@ -4,19 +4,7 @@
  */
 package uk.ac.earlham.marti.blast;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uk.ac.earlham.marti.core.FASTAQPair;
@@ -33,7 +21,7 @@ public class BlastProcessRunnable implements Runnable {
     private MARTiEngineOptions options;
     //private FileWatcher fileWatcher = null;
     private FASTAQPairPendingList pendingFileList = null;
-    private boolean isNewStyleDir;
+    //private boolean isNewStyleDir;
     private int numberOfReadsProcessed = 0;
     private boolean keepRunning = true;
     
@@ -72,7 +60,7 @@ public class BlastProcessRunnable implements Runnable {
         if (options.isBarcoded()) {
             if (fastqLeafname.contains("barcode")) {
                 String bcString = fastqLeafname.substring(fastqLeafname.indexOf("barcode")+7, fastqLeafname.indexOf("barcode")+9);
-                int barcode = Integer.parseInt(bcString);
+                //int barcode = Integer.parseInt(bcString);
                 String dir = options.getFastaDir() + "_chunks/barcode" + bcString;
                 File df = new File(dir);
                 if (!df.exists()) {
@@ -141,10 +129,10 @@ public class BlastProcessRunnable implements Runnable {
         while (keepRunning) {
             //FileWatcherItem fwi = null;
             FASTAQPair fa = null;
-            String fastaqPathname = null;
-            String alignmentPathname = null;
-            String parsedPathname = null;
-            String alignmentLogPathname = null;
+            //String fastaqPathname = null;
+            //String alignmentPathname = null;
+            //String parsedPathname = null;
+            //String alignmentLogPathname = null;
             
             // Get next file to process
             //while ((fwi == null) && (!fileWatcher.timedOut()) && (options.getStopFlag() == false)) {

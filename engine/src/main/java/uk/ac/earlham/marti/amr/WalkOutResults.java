@@ -4,10 +4,6 @@
  */
 package uk.ac.earlham.marti.amr;
 
-import java.awt.Font;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;

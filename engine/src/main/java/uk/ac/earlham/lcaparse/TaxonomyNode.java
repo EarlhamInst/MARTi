@@ -7,7 +7,6 @@ package uk.ac.earlham.lcaparse;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 
 /**
  * Representation of a taxonomy node.
@@ -72,7 +71,6 @@ public class TaxonomyNode<T> {
     // This value needs to be something that it is impossible to get a barcode ID for
     public static final int LCA_BARCODE = 100000;
     
-    private T data;
     private ArrayList<TaxonomyNode> children = new ArrayList<TaxonomyNode>();
     private Long taxonId;
     private Long parentId = null;
@@ -87,7 +85,7 @@ public class TaxonomyNode<T> {
     private Hashtable<Integer,Integer> summedCount = new Hashtable<Integer,Integer>();
     private Hashtable<Integer,Long> assignedYield = new Hashtable<Integer,Long>();
     private Hashtable<Integer,Long> summedYield = new Hashtable<Integer,Long>();
-//    private Hashtable<Integer,Integer> maxAssignedCount = new Hashtable<Integer,Integer>();
+    //private Hashtable<Integer,Integer> maxAssignedCount = new Hashtable<Integer,Integer>();
     private Hashtable<Integer,Integer> lcaAssignedCount = new Hashtable<Integer,Integer>();
     private Hashtable<Integer,Integer> lcaSummedCount = new Hashtable<Integer,Integer>();
     private Hashtable<Integer,Long> lcaYield = new Hashtable<Integer,Long>();
@@ -142,7 +140,7 @@ public class TaxonomyNode<T> {
         
         // New version
         int c = 0;
-        int m = 0;
+        //int m = 0;
 
         if (assignedCount.containsKey(bc)) {
             c = assignedCount.get(bc);

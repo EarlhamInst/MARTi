@@ -13,7 +13,7 @@ import java.util.Hashtable;
 public class MARTiProgressChunk {
     private Hashtable<String, String> blastJobsCompleted = new Hashtable<String, String>();
     
-    public void MARTiProgressChunk(String filename) {
+    public MARTiProgressChunk(String filename) {
     }
     
     public void markBlastCompleted(String dbName, String outputFilename) {

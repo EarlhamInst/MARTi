@@ -6,9 +6,7 @@ package uk.ac.earlham.marti.blast;
 
 import uk.ac.earlham.marti.schedule.*;
 import uk.ac.earlham.marti.core.*;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,8 +20,8 @@ import java.util.Arrays;
 
 public class BlastHandler {
     private MARTiEngineOptions options = null;
-    private int nSeqs = 0;
-    private ArrayList<String> mergeList = new ArrayList<String>();
+    //private int nSeqs = 0;
+    //private ArrayList<String> mergeList = new ArrayList<String>();
     //private String defaultFormatString = "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore stitle staxids";
     private String defaultFormatString = "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qcovs staxids";
     private ArrayList<String> inputFilenames = new ArrayList<String>();
@@ -56,7 +54,7 @@ public class BlastHandler {
     }
     
     private synchronized void runBlasts(String inputPathname) {
-        int barcode = options.getBarcodeFromPath(inputPathname);
+        //int barcode = options.getBarcodeFromPath(inputPathname);
         if(options.runningCARD()) {
             defaultFormatString = "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore stitle qcovs staxids";
         }           
@@ -87,10 +85,10 @@ public class BlastHandler {
                 
         for (int i=0; i<blastProcesses.size(); i++) {
             BlastProcess bp = blastProcesses.get(i);
-            String blastName = bp.getBlastName();
+            //String blastName = bp.getBlastName();
             String blastDb = bp.getBlastDatabase();
-            String memory = bp.getBlastMemory();
-            String queue = bp.getJobQueue();
+            //String memory = bp.getBlastMemory();
+            //String queue = bp.getJobQueue();
             String taxfilter = bp.getTaxaFilter();
             String negativeTaxaFilter = bp.getNegativeTaxaFilter();
             String dustString = bp.getDustString();

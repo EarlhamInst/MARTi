@@ -6,7 +6,6 @@
 package uk.ac.earlham.lcaparse;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * SAM file hit set representation (i.e. all hits relating to a query).

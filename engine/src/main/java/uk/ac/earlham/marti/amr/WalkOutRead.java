@@ -4,7 +4,6 @@
  */
 package uk.ac.earlham.marti.amr;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

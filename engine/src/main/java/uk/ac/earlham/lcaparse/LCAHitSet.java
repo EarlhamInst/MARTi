@@ -5,8 +5,6 @@
 
 package uk.ac.earlham.lcaparse;
 
-import java.util.ArrayList;
-
 /**
  * Interface defining a hit set (set of all hits for a query).
  * 

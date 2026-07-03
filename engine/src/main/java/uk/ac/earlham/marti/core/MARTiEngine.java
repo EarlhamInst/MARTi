@@ -6,11 +6,8 @@ package uk.ac.earlham.marti.core;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.zip.*;
-import uk.ac.earlham.marti.amr.WalkOutRead;
 import uk.ac.earlham.marti.schedule.*;
-import uk.ac.earlham.ml.MARTiMLAnalysis;
 
 /**
  * Entry class for tool.

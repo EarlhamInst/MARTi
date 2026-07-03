@@ -146,8 +146,8 @@ public class CARDOntology {
                         if (fields.length >= 11) {                            
                             String accession = fields[0];
                             String aroName = fields[5];
-                            String proteinAccession = fields[6];
-                            String dnaAccession = fields[7];
+                            //String proteinAccession = fields[6];
+                            //String dnaAccession = fields[7];
                             String geneFamily = fields[8];
                             String drugClass = fields[9];
                             String resistanceMechanism = fields[10];
@@ -204,7 +204,7 @@ public class CARDOntology {
         // Earlier versions had aro.csv and this sometimes used commas to separate, sometimes tabs.
         String tsvPathname = dbPath + File.separator + "aro.tsv";
         File aroFile = new File(tsvPathname);
-        boolean gotFile = false;
+        //boolean gotFile = false;
 
         if (aroFile.exists()) {
             parseTabSeparatedAROFile(tsvPathname);

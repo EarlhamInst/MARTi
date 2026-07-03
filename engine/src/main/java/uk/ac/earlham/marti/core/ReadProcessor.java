@@ -13,15 +13,8 @@ import uk.ac.earlham.marti.centrifuge.CentrifugeProcessRunnable;
 import uk.ac.earlham.marti.centrifuge.CentrifugeClassifier;
 import uk.ac.earlham.marti.kraken2.Kraken2ProcessRunnable;
 import uk.ac.earlham.marti.kraken2.Kraken2Classifier;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.concurrent.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import uk.ac.earlham.ml.MARTiMLAnalysis;
 
 /**
  * Main read processor class.

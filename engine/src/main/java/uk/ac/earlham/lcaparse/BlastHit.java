@@ -17,14 +17,12 @@ public class BlastHit implements LCAHit,Comparable {
     private Taxonomy taxonomy;
     private AccessionTaxonConvertor accTaxConvert;
     private String queryName;
-    private int queryLength;
     private int queryStart;
     private int queryEnd;
     private double queryCoverage = UNKNOWN;
     private String targetName;
     private int targetStart;
     private int targetEnd;
-    private int matches;
     private int length;
     private int mismatches;
     private double bitscore;

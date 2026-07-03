@@ -5,7 +5,6 @@
 package uk.ac.earlham.lcaparse;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 /**
  * Representation of a taxonomy rank.

@@ -10,13 +10,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Class to keep track of overall progress from read filtering to parsing alignments.

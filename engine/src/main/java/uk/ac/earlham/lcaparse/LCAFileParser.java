@@ -31,7 +31,6 @@ import uk.ac.earlham.marti.core.MARTiLog;
  * @author Richard M. Leggett
  */
 public class LCAFileParser {
-    private Hashtable<String, Integer> countPerTarget = new Hashtable<String, Integer>();
     private Hashtable<String, LCAHitSet> hitsByQuery = new Hashtable<String, LCAHitSet>();
     private Hashtable<Long, Integer> countsPerTaxon = new Hashtable<Long, Integer>(); 
     private Hashtable<String, Integer> equalsPerQuery = new Hashtable<String, Integer>();
@@ -148,15 +147,12 @@ public class LCAFileParser {
             
             if (br != null) {
                 String line;
-                String lastQuery = "";
-                int equal = 0;
 
                 do {
                     line = br.readLine();
                     if (line != null) {
                         if (line.length() > 1) {
                             LCAHit ah = createNewHit(taxonomy, accTaxConvert, line);
-                            long taxonId = ah.getTaxonId();
                             String queryName = ah.getQueryName();
                             LCAHitSet hs;
 
@@ -344,7 +340,7 @@ public class LCAFileParser {
         
         try {
             PrintWriter pw = new PrintWriter(new FileWriter(summaryFilename));
-            Set<Long> allTaxon = countsPerTaxon.keySet();
+            //Set<Long> allTaxon = countsPerTaxon.keySet();
             //for (Long taxon : allTaxon) {
             //    pw.println(taxon + "\t" + countsPerTaxon.get(taxon));
             //    System.out.println(countsPerTaxon.get(taxon) + "\t" + taxon +"\t" + taxonomy.getTaxonomyStringFromId(taxon));
@@ -413,21 +409,21 @@ public class LCAFileParser {
         return lastFilename;
     }
     
-    private void printEquals() {
-        int count = 0;
-        Set<String> keys = equalsPerQuery.keySet();
-        for (String queryName : keys) {
-            System.out.println(queryName + " has " + equalsPerQuery.get(queryName));
-            count++;
-        } 
-        System.out.println("Total equals count " + count);
-    }
+    //private void printEquals() {
+    //    int count = 0;
+    //    Set<String> keys = equalsPerQuery.keySet();
+    //    for (String queryName : keys) {
+    //        System.out.println(queryName + " has " + equalsPerQuery.get(queryName));
+    //        count++;
+    //    } 
+    //    System.out.println("Total equals count " + count);
+    //}
     
     public void printResults(AccessionTaxonConvertor atc) {
-//        Set<String> keys = countPerTarget.keySet();
-//        for (String targetName : keys) {
-//            System.out.println(targetName + " " + countPerTarget.get(targetName));
-//        }
+    //    Set<String> keys = countPerTarget.keySet();
+    //    for (String targetName : keys) {
+    //        System.out.println(targetName + " " + countPerTarget.get(targetName));
+    //     }
         
        List<Map.Entry<Long, Integer>> list = new ArrayList<Entry<Long, Integer>>(countsPerTaxon.entrySet());
 
@@ -439,7 +435,6 @@ public class LCAFileParser {
 
         for( Map.Entry<Long, Integer> entry : list  ){
             Long taxon = entry.getKey();
-            int count = entry.getValue();
             System.out.println(countsPerTaxon.get(taxon) + "\t" + taxon + "\t" + taxonomy.getTaxonomyStringFromId(taxon));            
         }        
     }

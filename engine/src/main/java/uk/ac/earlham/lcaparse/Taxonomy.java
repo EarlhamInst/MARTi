@@ -5,23 +5,14 @@
 
 package uk.ac.earlham.lcaparse;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import uk.ac.earlham.marti.core.MARTiEngineOptions;
 

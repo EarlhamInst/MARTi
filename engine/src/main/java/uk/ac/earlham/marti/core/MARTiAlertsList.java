@@ -8,13 +8,9 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Set;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
@@ -27,14 +23,11 @@ import javax.json.stream.JsonGenerator;
  * @author leggettr
  */
 public class MARTiAlertsList {
-    private MARTiEngineOptions options = null;
     private Hashtable<Integer, MARTiAlert> alertsByOrder = new Hashtable<Integer, MARTiAlert>(); 
     private Hashtable<String, MARTiAlert> alertsByMessage = new Hashtable<String, MARTiAlert>(); 
     int count = 0;
-    private long lastWriteTime = 0;
     
     public MARTiAlertsList(MARTiEngineOptions o) {
-        options = o;
     }
     
     public synchronized void writeAlertsFile(String alertsFilename) {

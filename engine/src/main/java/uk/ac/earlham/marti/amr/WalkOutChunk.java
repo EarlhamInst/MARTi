@@ -18,7 +18,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.zip.GZIPInputStream;
-import uk.ac.earlham.lcaparse.AccessionTaxonConvertor;
 import uk.ac.earlham.lcaparse.BlastHit;
 import uk.ac.earlham.lcaparse.LCAParseOptions;
 import uk.ac.earlham.lcaparse.Taxonomy;
@@ -50,7 +49,7 @@ public class WalkOutChunk {
     public void load(String cardPath, String bacteriaPath) {
         cardFilename = cardPath;
         bacteriaFilename = bacteriaPath;
-        LCAParseOptions lcaOptions = options.getReadClassifier().getLCAParseOptions();
+        //LCAParseOptions lcaOptions = options.getReadClassifier().getLCAParseOptions();
         int plasmidCount = 0;
         int chromosomeCount = 0;
         int otherCount = 0;
@@ -227,7 +226,7 @@ public class WalkOutChunk {
                 }
 
                 if (walkoutRead.getBacterialHitSetSize() > 0) {            
-                    String hostHit = walkoutRead.getBacterialHit();
+                    //String hostHit = walkoutRead.getBacterialHit();
                     String lcaHit = walkoutRead.getLCAHit();
                     String lcaShort = lcaHit.substring(lcaHit.lastIndexOf(',')+1);
                     long lcaTaxonID = walkoutRead.getLCAHitTaxonID();

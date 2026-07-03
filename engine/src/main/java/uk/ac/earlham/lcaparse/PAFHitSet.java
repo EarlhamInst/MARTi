@@ -6,7 +6,6 @@
 package uk.ac.earlham.lcaparse;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * PAF file hit set representation (i.e. all hits relating to a query).
@@ -51,7 +50,6 @@ public class PAFHitSet implements LCAHitSet {
         
         if (alignments.size() > 0) {
             // Is this better than our best?
-            boolean foundNewBest = false;
             
             if (ph.getQueryCover() > bestQueryCover) {
                 alignments.clear();

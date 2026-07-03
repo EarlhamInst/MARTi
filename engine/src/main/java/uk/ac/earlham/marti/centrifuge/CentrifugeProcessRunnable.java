@@ -4,7 +4,6 @@
  */
 package uk.ac.earlham.marti.centrifuge;
 
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uk.ac.earlham.marti.core.FASTAQPair;

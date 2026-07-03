@@ -337,9 +337,9 @@ public class LCAParseOptions {
     }
 
     
-    private void setSortHitsByBitscore() {
-        sortHitsByBitScore = true;
-    }
+    //private void setSortHitsByBitscore() {
+    //    sortHitsByBitScore = true;
+    //}
     
     public boolean sortHitsbyBitscore() {
         return sortHitsByBitScore;

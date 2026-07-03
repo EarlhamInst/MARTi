@@ -19,7 +19,6 @@ public class BlastHitSet implements LCAHitSet {
     private ArrayList<BlastHit> rejectedAlignments = new ArrayList<BlastHit>();
     private double bestBitScore = 0;
     private double bitScoreThreshold = 0;
-    private double bestQueryCover = 0;
     private double bestIdentity = 0;
     private double bestEValue = 0;
     private int bestLength = 0;
@@ -45,7 +44,6 @@ public class BlastHitSet implements LCAHitSet {
                 
         if (alignments.size() > 0) {
             // Is this better than our best?
-            boolean foundNewBest = false;
 
             if (bh.getAlignmentScore() > bestBitScore) {
                 updateBest = true;

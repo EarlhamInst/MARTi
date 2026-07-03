@@ -17,15 +17,22 @@ public class PAFHit implements LCAHit {
     private AccessionTaxonConvertor accTaxConvert;
     private String queryName;
     private int queryLength;
+    @SuppressWarnings("unused")
     private int queryStart;
+    @SuppressWarnings("unused")
     private int queryEnd;
+    @SuppressWarnings("unused")
     private String strand;
     private String targetName;
+    @SuppressWarnings("unused")
     private int targetLength;
+    @SuppressWarnings("unused")
     private int targetStart;
+    @SuppressWarnings("unused")
     private int targetEnd;
     private int matches;
     private int basesInMapping;
+    @SuppressWarnings("unused")
     private int quality;
     private int mismatchesAndGaps = 0;
     private double identity;

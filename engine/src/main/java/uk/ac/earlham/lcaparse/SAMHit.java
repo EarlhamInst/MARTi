@@ -17,9 +17,12 @@ public class SAMHit implements LCAHit {
     private AccessionTaxonConvertor accTaxConvert;
     private String queryName;
     private String targetName;
+    @SuppressWarnings("unused")
     private int matches;
+    @SuppressWarnings("unused")
     private int pos;
     private int mapQ;
+    @SuppressWarnings("unused")
     private int flag;
     private long taxonId = -1;
     private ArrayList<Long> taxonIdPath;

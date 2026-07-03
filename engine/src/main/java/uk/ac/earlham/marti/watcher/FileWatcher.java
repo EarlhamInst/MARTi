@@ -8,7 +8,6 @@ import java.io.File;
 import java.util.*;
 import java.util.Hashtable;
 import java.util.LinkedList;
-import java.util.concurrent.ThreadPoolExecutor;
 import uk.ac.earlham.marti.core.MARTiEngineOptions;
 import uk.ac.earlham.marti.core.MARTiProgress;
 import uk.ac.earlham.marti.core.MARTiLog;
@@ -22,7 +21,7 @@ public class FileWatcher {
     private MARTiEngineOptions options;
     private int filesToProcess = 0;
     private int filesProcessed = 0;
-    private int lastCompleted = -1;
+    //private int lastCompleted = -1;
     private long lastFileTime = System.nanoTime();
     private long secsSinceLast = 0;
     private boolean useProgressBar = false;
