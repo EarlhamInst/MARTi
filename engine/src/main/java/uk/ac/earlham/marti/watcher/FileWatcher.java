@@ -21,13 +21,13 @@ public class FileWatcher {
     private MARTiEngineOptions options;
     private int filesToProcess = 0;
     private int filesProcessed = 0;
-    //private int lastCompleted = -1;
+    private int lastCompleted = -1;
     private long lastFileTime = System.nanoTime();
     private long secsSinceLast = 0;
     private boolean useProgressBar = false;
     private ArrayList<FileWatcherItem> batchContainersToWatch = new ArrayList<FileWatcherItem>();
     private ArrayList<FileWatcherItem> fileDirsToWatch = new ArrayList<FileWatcherItem>();
-    private Hashtable<String, Integer> batchDirs = new Hashtable<String, Integer>();
+    //private Hashtable<String, Integer> batchDirs = new Hashtable<String, Integer>();
     private Hashtable<String, Integer> allFiles = new Hashtable<String, Integer>();
     private LinkedList<FileWatcherItem> pendingFiles = new LinkedList<FileWatcherItem>();
     private MARTiProgress progressReport = null;
@@ -188,4 +188,8 @@ public class FileWatcher {
         
         return false;               
     }
+
+    public int getLastCompleted() {
+        return lastCompleted;
+    }   
 }

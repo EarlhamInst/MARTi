@@ -145,8 +145,7 @@ public class SimpleJobSchedulerJob {
                 options.addAlertOnlyOnce(new MARTiAlert(MARTiAlert.TYPE_ERROR, "ERROR: getExitValue for job "+jobId+" ("+identifier+") is "+getExitValue() + " - results are unpredictable"));
             }
             
-            // TODO:
-            // What do we do if getExitValue doesn't return 0?
+            // TODO: What do we do if getExitValue doesn't return 0?
         }
         
         return processFinished;
